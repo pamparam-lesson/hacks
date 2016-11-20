@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9a0b4ad-02ff-436a-897b-9a3c2b9602b8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="e9a0b4ad-02ff-436a-897b-9a3c2b9602b8" name="Default" comment="" />
     <list id="8d1ac6bc-641e-495d-aeb6-04e0a1dace96" name="New changelist" comment="asddddddddd" />
     <ignored path="hacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -283,7 +281,7 @@
       <workItem from="1479493126229" duration="912000" />
       <workItem from="1479641411562" duration="4643000" />
       <workItem from="1479658892951" duration="1855000" />
-      <workItem from="1479660758578" duration="126000" />
+      <workItem from="1479660758578" duration="403000" />
     </task>
     <task id="LOCAL-00001" summary="настраиваю внешний вид">
       <created>1479468029273</created>
@@ -303,7 +301,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12531000" />
+    <option name="totallyTimeSpent" value="12808000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="24" width="1867" height="1056" extended-state="6" />
