@@ -26,7 +26,7 @@
 
 Для создания своего хоста Apache VirtualHosts
 
-1. Правим /opt/lampp/etc/httpd.conf 
+1. Правим sudo gedit /opt/lampp/etc/httpd.conf 
 
 ####1.1. Изменить User daemon на User username (стр. 173) 
 
@@ -45,7 +45,7 @@
 
 
 ####1.2. Включаем VirtualHosts — раскомментировав (стр. 488)
-**Правим /opt/lampp/etc/httpd.conf**
+**Правим sudo gedit /opt/lampp/etc/httpd.conf**
 
 487    #Virtual hosts
 488    #Include etc/extra/httpd-vhosts.conf
@@ -57,7 +57,7 @@
 
 
 
-##2. Правим /opt/lampp/etc/extra/httpd-vhosts.conf
+##2. Правим sudo gedit /opt/lampp/etc/extra/httpd-vhosts.conf
 
 2.1. Чтобы оставить локальный хост работающим без изменений 
 
