@@ -54,8 +54,14 @@
 487    #Virtual hosts                  
 488    Include etc/extra/httpd-vhosts.conf 
 
+####1.3 Добовляем модуль mysql
+Если ваше скрипты используют в процессе работы MySQL, выполните команду:      
 
+**sudo apt-get install php7.0-mysql**   
 
+####правим файл php.ini    
+-------------------
+**sudo gedit /opt/lampp/etc/php.ini**   
 
 ##2. Правим sudo gedit /opt/lampp/etc/extra/httpd-vhosts.conf
 
