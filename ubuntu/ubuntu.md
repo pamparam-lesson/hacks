@@ -1,12 +1,12 @@
 
-## Установка програм
+## Установка программ
 ---------------------------------
 
-`sudo apt-get install name_program`
+`sudo apt-get install name_programm`
 
-## Удаление програм
+## Удаление программ
 ---
-`sudo apt-get remove name_program` 
+`sudo apt-get remove name_programm` 
 
 ##Отключение заставки при просмотре видео
 ----------------------------------------
