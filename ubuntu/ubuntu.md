@@ -29,3 +29,13 @@
    **-keystroke** : говорить unclutter прятать курсор когда вы начинаете печатать на клавиатуре.          
    
    **-not** : не прятать указатель в окнах указанных в списке (названия программ указываются как аргументы)       
+   
+## Установка MS шрифтов
+
+нужно выпролнить последовательность команд
+`sudo apt-get install ttf-mscorefonts-installer`    
+`sudo dpkg -P ttf-mscorefonts-installer`    
+`sudo apt-get install ttf-mscorefonts-installer`    
+
+Используйте Tab и Enter ключи, чтобы принять лицензионное соглашение в 
+окне основных шрифтов Microsoft TrueType, который выскакивает.
