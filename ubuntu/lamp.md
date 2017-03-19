@@ -9,17 +9,18 @@
 	
 `sudo gedit /etc/apache2/apache2.conf`
 
-Не забываем. что после ввода команды, начинающейся с **sudo**, нужно ввести пароль администратора. Больше напоминать не буду.
 
 Здесь ищем теги _<Directory>_ (это легко сделать встроенным в nano поиском;   
  вызывается он комбинацией клавиш, или, как говорят, хоткеем Ctrl+w) и под последним из них дописываем
 	
-**<Directory /home/user/public_html>
-  AllowOverride All
-  Require all granted
-</Directory>**
+<Directory /home/user/public_html>    
+  AllowOverride All    
+  Require all granted      
+</Directory>
 
-Здесь мы побежали немного впереди паровоза, но раз уж нам пришлось открыть этот файл, то все изменения сразу и внесем. Яснее станет позже, пока объясню вкратце. Мы прописали опции общей директории (папки) для всех наших сайтов, а именно: разрешили использовать для нее файл .htaccess (для ЧПУ, например; но не только) и предоставили права доступа (через веб-сервер) для всех.
+Здесь мы побежали немного впереди паровоза, но раз уж нам пришлось открыть этот файл, то все изменения сразу и внесем. Яснее станет позже, пока объясню вкратце.
+ Мы прописали опции общей директории (папки) для всех наших сайтов, а именно: разрешили использовать для нее файл .htaccess 
+ (для ЧПУ, например; но не только) и предоставили права доступа (через веб-сервер) для всех.
 
 Дальше хоткеем Alt+/ идем в конец файла и дописываем здесь
 
@@ -30,22 +31,22 @@
 
 Поскольку в подавляющем большинстве (если не у всех) у наших сайтов дефолтной страницей будет index.php, а не index.html, то открываем следующий файл.
 	
-`sudo nano /etc/apache2/mods-available/dir.con`f
+`sudo gedit /etc/apache2/mods-available/dir.conf`
 
 И здесь index.php помещаем в начало строки DirectoryIndex, перед index.html. Должно получиться так.
 	
-`<IfModule mod_dir.c>
-  DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
-</IfModule>`
+`<IfModule mod_dir.c>`
+ ` DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm`
+`</IfModule>`
 
 Сохраняем и закрываем. 
 
-**php.ini**
+**php.ini** ------------------------------------------------
 
-Ну а теперь поковыряемся в конфигурационном файле PHP, находящемся по адресу **/etc/php5/apache2/php.ini**. Да не просто поковыряемся, а и кое-что поменяем.
+Ну а теперь поковыряемся в конфигурационном файле PHP, находящемся по адресу **/etc/php/7.0/apache2/php.ini**. Да не просто поковыряемся, а и кое-что поменяем.
 
 	
-`sudo gedit /etc/php5/apache2/php.ini`
+`sudo gedit /etc/php/7.0/apache2/php.ini`
 Короткая форма записи
 	
 `short_open_tag = Off`
@@ -102,6 +103,8 @@ ErrorLog ${APACHE_LOG_DIR}/error.log
 CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>`
 
+переносим все хосты из одной папки в другую
+`sudo cp /media/pamparam/progi/sites-available/* /etc/apache2/sites-available -R -n -v`
 
 Теперь сохраните файл, далее нужно активировать наш хост:
  `sudo a2ensite test.site.conf`
@@ -139,7 +142,7 @@ sudo service apache2 restart`
 **включить отображение ошибок в php**
  
 Для этого откройте файл **/etc/php/7.0/apache2/php.ini**, найдите строку **display_errors = Off** и поменяйте **off** на **on**:
- **gedit /etc/php/7.0/apache2/php.ini**
+ **sudo gedit /etc/php/7.0/apache2/php.ini**
 
 Редакция php.ini:
 
@@ -200,7 +203,7 @@ sudo service apache2 restart`
 -------------------------------------
 
 Установка и настройка lamp в ubuntu 16.04 также будет включать установку Phpmyadmin. Phpmyadmin - это бесплатный инструмент, с открытым исходным кодом, для реализации веб-интерфейса управления базами данных MySQL. Он доступен в официальных репозиториях Ubuntu 16.04, установим его с помощью команды:
- sudo apt-get install phpmyadmin php-mbstring php-gettext
+ `sudo apt-get install phpmyadmin php-mbstring php-gettext`
 
 Но тут уже во время установки потребуется немного конфигурации. Сначала нужно выбрать наш веб-сервер:
 Для перемещения по пунктам используйте стрелки вверх/вниз, для выбора пробел, для переключения - Tab.
@@ -208,6 +211,18 @@ sudo service apache2 restart`
 
 Вводим пароль, который будет использован для подключения phpadmin к базе данных
 Подтверждение пароля:
+
+`sudo apt-get install php7.0-mbstring php7.0-gettext php7.0-mcrypt`
+
+После этого нужно включить эти модули
+
+`sudo phpenmod mcrypt
+ sudo phpenmod mbstring`
+
+И перезапустить apache2
+
+`sudo systemctl restart apache2`
+
 Когда установка phpmyadmin ubuntu 16.04 будет завершена откройте браузер и наберите в адресной строке localhost/phpmyadmin:
 
 
@@ -245,3 +260,18 @@ curl -sS https://getcomposer.org/installer | php`
 устанавливаем плагин для yii
 -------------------------------------
 `composer global require "fxp/composer-asset-plugin:^1.2.0"`
+<VirtualHost *:80>
+ServerAdmin admin@zululu
+    DocumentRoot "/media/pamparam/progi/OpenServer/domains/zululu/web"
+    ServerName zululu
+    ServerAlias zululu
+    ErrorLog "/media/pamparam/progi/OpenServer/domains/zululu/logs/zululu-error_log"
+    CustomLog "/media/pamparam/progi/OpenServer/domains/zululu/logs/zululu-access_log" common
+<Directory "/media/pamparam/progi/OpenServer/domains/zululu">
+Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+        Require all granted
+</Directory>
+</VirtualHost>
+
+настройка хоста и php.ini 
