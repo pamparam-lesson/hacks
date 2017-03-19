@@ -260,6 +260,8 @@ curl -sS https://getcomposer.org/installer | php`
 устанавливаем плагин для yii
 -------------------------------------
 `composer global require "fxp/composer-asset-plugin:^1.2.0"`
+обновление плагина
+`composer global require fxp/composer-asset-plugin --no-plugins`
 <VirtualHost *:80>
 ServerAdmin admin@zululu
     DocumentRoot "/media/pamparam/progi/OpenServer/domains/zululu/web"
